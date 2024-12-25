@@ -7,22 +7,21 @@ use Mbsoft\Rewards\Contracts\CriteriaInterface;
 
 readonly class PurchaseFrequencyCriteria implements CriteriaInterface
 {
-
     public function __construct(
         private int $threshold,
-    ){}
+    ) {}
 
     public function evaluate(int $id, array $context): bool
     {
-        return ($context['purchases'] >= $this->threshold);
+        return $context['purchases'] >= $this->threshold;
     }
 
     public function toArray(): array
     {
         return [
-            'type'        => 'purchase_frequency',
-            'criteria'    => '$purchases >= $this->threshold',
-            'threshold'   => $this->threshold,
+            'type' => 'purchase_frequency',
+            'criteria' => '$purchases >= $this->threshold',
+            'threshold' => $this->threshold,
         ];
     }
 

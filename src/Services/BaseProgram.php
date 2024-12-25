@@ -9,7 +9,9 @@ use Spatie\LaravelData\Data;
 abstract class BaseProgram extends Data
 {
     protected string $name;
+
     protected string $description;
+
     protected ProgramType $type;
 
     protected array $offers = [];
@@ -21,18 +23,31 @@ abstract class BaseProgram extends Data
         $this->type = $config['type'] ?? ProgramType::GENERIC;
     }
 
-    public abstract function process(int $customer, array $context): mixed;
+    abstract public function process(int $customer, array $context): mixed;
 
     // Getters
-    public function getName(): string { return $this->name; }
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
-    public function getDescription(): string { return $this->description; }
-    public function getType(): string { return $this->type; }
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
 
     /**
-     * @return array|Array<EarningInterface>
+     * @return array|array<EarningInterface>
      */
-    public function getOffers(): array { return $this->offers; }
+    public function getOffers(): array
+    {
+        return $this->offers;
+    }
 
     public function getOffer(string $hash): EarningInterface
     {
@@ -56,8 +71,10 @@ abstract class BaseProgram extends Data
     {
         if (isset($this->offers[$hash])) {
             unset($this->offers[$hash]);
+
             return true;
         }
+
         return false;
     }
 }

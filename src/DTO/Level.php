@@ -3,16 +3,16 @@
 namespace Mbsoft\Rewards\DTO;
 
 use InvalidArgumentException;
-use Spatie\LaravelData\Data;
 use Mbsoft\Rewards\Contracts\CriteriaInterface;
+use Spatie\LaravelData\Data;
 
 class Level extends Data
 {
     /**
-     * @param string $name Name of the level
-     * @param int $threshold Minimum score or condition required to unlock the level
-     * @param CriteriaInterface[] $criteria Additional criteria required for this level
-     * @param array $metadata Optional metadata for additional level details
+     * @param  string  $name  Name of the level
+     * @param  int  $threshold  Minimum score or condition required to unlock the level
+     * @param  CriteriaInterface[]  $criteria  Additional criteria required for this level
+     * @param  array  $metadata  Optional metadata for additional level details
      */
     public function __construct(
         public string $name,
@@ -23,21 +23,17 @@ class Level extends Data
 
     /**
      * Check if the customer meets the level requirements.
-     *
-     * @param int $customer
-     * @param array $context
-     * @return bool
      */
     public function checkLevel(int $customer, array $context): bool
     {
         // Check if score meets the threshold
-        if (!isset($context['score']) || $context['score'] < $this->threshold) {
+        if (! isset($context['score']) || $context['score'] < $this->threshold) {
             return false;
         }
 
         // Evaluate additional criteria
         foreach ($this->criteria as $criterion) {
-            if (!$criterion->evaluate($customer, $context)) {
+            if (! $criterion->evaluate($customer, $context)) {
                 return false;
             }
         }
@@ -48,13 +44,11 @@ class Level extends Data
     /**
      * Create an instance from an array.
      *
-     * @param array $data
-     * @return self
      * @throws InvalidArgumentException
      */
     public static function fromArray(array $data): self
     {
-        if (!isset($data['criteria']) || !is_array($data['criteria'])) {
+        if (! isset($data['criteria']) || ! is_array($data['criteria'])) {
             throw new InvalidArgumentException('Criteria must be an array of CriteriaInterface instances.');
         }
 
@@ -68,8 +62,6 @@ class Level extends Data
 
     /**
      * Get the attributes of the class.
-     *
-     * @return array
      */
     public static function getAttributes(): array
     {

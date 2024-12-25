@@ -26,7 +26,7 @@ class PointProgram extends BaseProgram
             $score = $offer->calculateScore($customer, $context);
 
             foreach ($rewards as $rewardHash => $reward) {
-                if (!$reward->canRedeem($score)) {
+                if (! $reward->canRedeem($score)) {
                     continue;
                 }
 
@@ -38,28 +38,29 @@ class PointProgram extends BaseProgram
                 ];
             }
         }
+
         return $out;
     }
 
-    public static function example(array $transaction = ["amount"=>0]): void
+    public static function example(array $transaction = ['amount' => 0]): void
     {
         $programData = [
-            "id" => 1,
-            "business_id" => 1,
-            "name" => "Points Based Program",
-            "description" => "Points Based Program",
-            "type" => ProgramType::POINT_BASED,
+            'id' => 1,
+            'business_id' => 1,
+            'name' => 'Points Based Program',
+            'description' => 'Points Based Program',
+            'type' => ProgramType::POINT_BASED,
         ];
 
         $simpleOffer = SimplePointOffer::fromArray([
-            "attributes" => ["per_amount_spent" => 10],
-            "rewards" => [],
-            "status" => OfferStatus::Active,
+            'attributes' => ['per_amount_spent' => 10],
+            'rewards' => [],
+            'status' => OfferStatus::Active,
         ]);
 
         $simpleDiscountReward = SimpleDiscountReward::fromArray([
-            "points_for_amount_discount" => 100,
-            "minimum_points_required" => 500
+            'points_for_amount_discount' => 100,
+            'minimum_points_required' => 500,
         ]);
 
         $simpleOffer->addReward($simpleDiscountReward);

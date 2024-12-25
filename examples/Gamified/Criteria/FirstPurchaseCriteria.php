@@ -14,13 +14,13 @@ readonly class FirstPurchaseCriteria implements CriteriaInterface
     public function toArray(): array
     {
         return [
-            'type'        => 'first_purchase',
-            'criteria'    => '$purchases > 0',
+            'type' => 'first_purchase',
+            'criteria' => '$purchases > 0',
         ];
     }
 
     public static function fromArray(array $data): CriteriaInterface
     {
-        return new self();
+        return new self;
     }
 }

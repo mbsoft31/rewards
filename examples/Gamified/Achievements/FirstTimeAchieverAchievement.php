@@ -8,7 +8,7 @@ use Mbsoft\Rewards\DTO\Achievement;
 class FirstTimeAchieverAchievement extends Achievement
 {
     public function __construct(
-        public string $name = "First Time Achiever Achievement",
+        public string $name = 'First Time Achiever Achievement',
         public array $metadata = []
     ) {
         $this->criteria[] = CriteriaFactory::make([

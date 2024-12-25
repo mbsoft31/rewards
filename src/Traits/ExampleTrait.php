@@ -2,7 +2,4 @@
 
 namespace Mbsoft\Rewards\Traits;
 
-trait ExampleTrait
-{
-
-}
+trait ExampleTrait {}

@@ -1,4 +1,5 @@
 <?php
+
 namespace Mbsoft\Rewards\Contracts;
 
 interface EarningInterface

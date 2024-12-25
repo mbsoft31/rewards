@@ -8,7 +8,7 @@ readonly class ScoreThresholdCriteria implements CriteriaInterface
 {
     public function __construct(
         private int $threshold
-    ){}
+    ) {}
 
     public function evaluate(int $id, array $context): bool
     {
@@ -20,7 +20,7 @@ readonly class ScoreThresholdCriteria implements CriteriaInterface
         return [
             'type' => 'score_threshold',
             'criteria' => '$score >= $this->threshold',
-            'threshold' => $this->threshold
+            'threshold' => $this->threshold,
         ];
     }
 

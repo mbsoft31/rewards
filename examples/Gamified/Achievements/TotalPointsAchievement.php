@@ -8,7 +8,7 @@ use Mbsoft\Rewards\DTO\Achievement;
 class TotalPointsAchievement extends Achievement
 {
     public function __construct(
-        public string $name = "Total Points Achievement",
+        public string $name = 'Total Points Achievement',
         public array $metadata = []
     ) {
         $this->criteria[] = CriteriaFactory::make([

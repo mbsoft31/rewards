@@ -8,24 +8,26 @@ class SimplePointOffer extends BaseOffer
 {
     public function calculateScore(mixed $id, array $context): int|float
     {
-        if (!isset($context["amount"])) {
+        if (! isset($context['amount'])) {
             return 0;
         }
-        $amount = $context["amount"];
-        $multiplier = $this->attributes["per_amount_spent"];
+        $amount = $context['amount'];
+        $multiplier = $this->attributes['per_amount_spent'];
+
         return $amount * $multiplier;
     }
 
     public static function fromArray(array $data): SimplePointOffer
     {
         $offer = new static(
-            attributes: $data["attributes"] ?? [],
+            attributes: $data['attributes'] ?? [],
             rewards: [],
-            status: $data["status"] ?? []
+            status: $data['status'] ?? []
         );
-        foreach ($data["rewards"] as $rewardData) {
+        foreach ($data['rewards'] as $rewardData) {
             $offer->rewards[$rewardData->getHash()] = $rewardData;
         }
+
         return $offer;
     }
 }
