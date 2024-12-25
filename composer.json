@@ -17,8 +17,9 @@
     ],
     "require": {
         "php": "^8.2",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0"
+        "illuminate/contracts": "^10.0||^11.0",
+        "spatie/laravel-data": "^4.11",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -35,6 +36,7 @@
     "autoload": {
         "psr-4": {
             "Mbsoft\\Rewards\\": "src/",
+            "Mbsoft\\Examples\\": "examples/",
             "Mbsoft\\Rewards\\Database\\Factories\\": "database/factories/"
         }
     },
