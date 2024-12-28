@@ -8,7 +8,7 @@ use Mbsoft\Rewards\DTO\Badge;
 class MonthlySpenderBadge extends Badge
 {
     public function __construct(
-        public string $name = "Monthly Spender Badge",
+        public string $name = 'Monthly Spender Badge',
         public array $metadata = []
     ) {
         $this->criteria[] = CriteriaFactory::make([

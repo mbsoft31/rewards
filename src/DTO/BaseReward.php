@@ -8,6 +8,7 @@ use Spatie\LaravelData\Data;
 abstract class BaseReward extends Data implements RedeemingInterface
 {
     public array $attributes = [];
+
     public function __construct(array $attributes)
     {
         $this->attributes = $attributes;

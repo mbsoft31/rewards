@@ -13,7 +13,7 @@ abstract class BaseOffer extends Data implements EarningInterface
         protected array $attributes = [],
         protected array $rewards = [],
         protected string|OfferStatus $status = 'active',
-    ){}
+    ) {}
 
     public function getStatus(): string|OfferStatus
     {
@@ -41,8 +41,10 @@ abstract class BaseOffer extends Data implements EarningInterface
     {
         if (isset($this->rewards[$reward->getHash()])) {
             unset($this->rewards[$reward->getHash()]);
+
             return true;
         }
+
         return false;
     }
 
@@ -54,18 +56,18 @@ abstract class BaseOffer extends Data implements EarningInterface
     public function toArray(): array
     {
         return [
-            "attributes" => $this->attributes,
-            "rewards" => $this->rewards,
-            "status" => $this->status,
+            'attributes' => $this->attributes,
+            'rewards' => $this->rewards,
+            'status' => $this->status,
         ];
     }
 
     public static function fromArray(array $data): BaseOffer
     {
         return new static(
-            attributes: $data["attributes"] ?? [],
-            rewards: $data["rewards"] ?? [],
-            status: OfferStatus::tryFrom($data["status"]) ?? 'active',
+            attributes: $data['attributes'] ?? [],
+            rewards: $data['rewards'] ?? [],
+            status: OfferStatus::tryFrom($data['status']) ?? 'active',
         );
     }
 }

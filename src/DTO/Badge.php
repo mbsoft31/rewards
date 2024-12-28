@@ -3,15 +3,15 @@
 namespace Mbsoft\Rewards\DTO;
 
 use InvalidArgumentException;
-use Spatie\LaravelData\Data;
 use Mbsoft\Rewards\Contracts\CriteriaInterface;
+use Spatie\LaravelData\Data;
 
 class Badge extends Data
 {
     /**
-     * @param string $name Name of the badge
-     * @param CriteriaInterface[] $criteria List of criteria objects
-     * @param array $metadata Optional metadata for additional badge details
+     * @param  string  $name  Name of the badge
+     * @param  CriteriaInterface[]  $criteria  List of criteria objects
+     * @param  array  $metadata  Optional metadata for additional badge details
      */
     public function __construct(
         public string $name,
@@ -21,31 +21,26 @@ class Badge extends Data
 
     /**
      * Evaluate if all criteria for the badge are met.
-     *
-     * @param int $customer
-     * @param array $context
-     * @return bool
      */
     public function evaluate(int $customer, array $context): bool
     {
         foreach ($this->criteria as $criterion) {
-            if (!$criterion->evaluate($customer, $context)) {
+            if (! $criterion->evaluate($customer, $context)) {
                 return false;
             }
         }
+
         return true;
     }
 
     /**
      * Create an instance from an array.
      *
-     * @param array $data
-     * @return self
      * @throws InvalidArgumentException
      */
     public static function fromArray(array $data): self
     {
-        if (!isset($data['criteria']) || !is_array($data['criteria'])) {
+        if (! isset($data['criteria']) || ! is_array($data['criteria'])) {
             throw new InvalidArgumentException('Criteria must be an array of CriteriaInterface instances.');
         }
 
@@ -58,8 +53,6 @@ class Badge extends Data
 
     /**
      * Get the attributes of the class.
-     *
-     * @return array
      */
     public static function getAttributes(): array
     {

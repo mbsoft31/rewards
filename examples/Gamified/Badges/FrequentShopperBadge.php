@@ -8,7 +8,7 @@ use Mbsoft\Rewards\DTO\Badge;
 class FrequentShopperBadge extends Badge
 {
     public function __construct(
-        public string $name = "Frequent Shopper Badge",
+        public string $name = 'Frequent Shopper Badge',
         public array $metadata = []
     ) {
         $this->criteria[] = CriteriaFactory::make([

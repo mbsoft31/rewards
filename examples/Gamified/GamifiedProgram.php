@@ -17,7 +17,9 @@ use Mbsoft\Rewards\Services\BaseProgram;
 class GamifiedProgram extends BaseProgram
 {
     protected array $levels = [];
+
     protected array $badges = [];
+
     protected array $achievements = [];
 
     public function __construct(array $config)
@@ -27,8 +29,6 @@ class GamifiedProgram extends BaseProgram
 
     /**
      * Add a level to the program.
-     *
-     * @param Level $level
      */
     public function addLevel(Level $level): void
     {
@@ -37,8 +37,6 @@ class GamifiedProgram extends BaseProgram
 
     /**
      * Add a badge to the program.
-     *
-     * @param Badge $badge
      */
     public function addBadge(Badge $badge): void
     {
@@ -47,8 +45,6 @@ class GamifiedProgram extends BaseProgram
 
     /**
      * Add an achievement to the program.
-     *
-     * @param Achievement $achievement
      */
     public function addAchievement(Achievement $achievement): void
     {
@@ -59,8 +55,8 @@ class GamifiedProgram extends BaseProgram
     {
         $output = [
             'achieved_levels' => [],
-            'earned_badges'   => [],
-            'achievements'    => [],
+            'earned_badges' => [],
+            'achievements' => [],
         ];
 
         // Evaluate Levels
@@ -95,18 +91,18 @@ class GamifiedProgram extends BaseProgram
             'description' => 'A program with varied levels, badges, and achievements',
         ]);
 
-        $program->addLevel(new Level(name: "Level 1", threshold: 100));
-        $program->addLevel(new Level(name: "Level 2", threshold: 300));
-        $program->addLevel(new Level(name: "Level 3", threshold: 600));
-        $program->addLevel(new Level(name: "Level 4", threshold: 1000));
-        $program->addLevel(new Level(name: "Level 5", threshold: 1500));
+        $program->addLevel(new Level(name: 'Level 1', threshold: 100));
+        $program->addLevel(new Level(name: 'Level 2', threshold: 300));
+        $program->addLevel(new Level(name: 'Level 3', threshold: 600));
+        $program->addLevel(new Level(name: 'Level 4', threshold: 1000));
+        $program->addLevel(new Level(name: 'Level 5', threshold: 1500));
 
-        $program->addBadge(new FirstPurchaseBadge());
-        $program->addBadge(new FrequentShopperBadge());
-        $program->addBadge(new MonthlySpenderBadge());
+        $program->addBadge(new FirstPurchaseBadge);
+        $program->addBadge(new FrequentShopperBadge);
+        $program->addBadge(new MonthlySpenderBadge);
 
         $program->addAchievement(new HighSpenderAchievement(metadata: ['threshold' => 5000]));
-        $program->addAchievement(new FirstTimeAchieverAchievement());
+        $program->addAchievement(new FirstTimeAchieverAchievement);
         $program->addAchievement(new TotalPointsAchievement(metadata: ['threshold' => 1000]));
         $program->addAchievement(new ExclusiveEventAchievement(metadata: ['event_id' => 1]));
 

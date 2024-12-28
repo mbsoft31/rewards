@@ -8,7 +8,7 @@ use Mbsoft\Rewards\DTO\Achievement;
 class HighSpenderAchievement extends Achievement
 {
     public function __construct(
-        public string $name = "High Spender Achievement",
+        public string $name = 'High Spender Achievement',
         public array $metadata = []
     ) {
         $this->criteria[] = CriteriaFactory::make([

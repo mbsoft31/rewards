@@ -9,7 +9,7 @@ readonly class HighSpenderCriteria implements CriteriaInterface
 {
     public function __construct(
         private int $threshold,
-    ){}
+    ) {}
 
     public function evaluate(int $id, array $context): bool
     {
@@ -19,9 +19,9 @@ readonly class HighSpenderCriteria implements CriteriaInterface
     public function toArray(): array
     {
         return [
-            'type'        => 'high_spender',
-            'criteria'    => '$total_spent > $this->threshold',
-            'threshold'   => $this->threshold,
+            'type' => 'high_spender',
+            'criteria' => '$total_spent > $this->threshold',
+            'threshold' => $this->threshold,
         ];
     }
 

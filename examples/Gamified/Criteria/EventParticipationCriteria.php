@@ -8,7 +8,7 @@ readonly class EventParticipationCriteria implements CriteriaInterface
 {
     public function __construct(
         private int $event_id
-    ){}
+    ) {}
 
     public function evaluate(int $id, array $context): bool
     {
@@ -20,7 +20,7 @@ readonly class EventParticipationCriteria implements CriteriaInterface
         return [
             'type' => 'event_participation',
             'criteria' => '$event >= $this->event_id',
-            'event_id' => $this->event_id
+            'event_id' => $this->event_id,
         ];
     }
 
