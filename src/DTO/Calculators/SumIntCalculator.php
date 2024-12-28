@@ -6,12 +6,11 @@ use Mbsoft\Rewards\Contracts\CalculatorInterface;
 
 class SumIntCalculator implements CalculatorInterface
 {
-
     public function calculate(int $id, array $context): int
     {
         $sum = $context['result'] ?? 0;
         if ($value = array_pop($context['calculators'])) {
-            if (!is_integer($value)) {
+            if (! is_int($value)) {
                 throw new \InvalidArgumentException('Calculator value must be an integer.');
             }
             $sum += $value;
@@ -24,8 +23,8 @@ class SumIntCalculator implements CalculatorInterface
     {
         return [
             'type' => 'sum',
-            'calculator' => '$sum = ($result ?? 0) + pop($calculators)' ,
-            ''
+            'calculator' => '$sum = ($result ?? 0) + pop($calculators)',
+            '',
         ];
     }
 
