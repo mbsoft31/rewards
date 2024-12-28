@@ -64,8 +64,9 @@ class GamifiedProgram extends BaseProgram
         ];
 
         // Evaluate Levels
+        /**@var Level $level*/
         foreach ($this->levels as $level) {
-            if ($context['score'] >= $level->threshold) {
+            if ($level->checkLevel($customer, $context)) {
                 $output['achieved_levels'][] = $level->name;
             }
         }
