@@ -124,5 +124,3 @@ $algerianID = new AlgerianNationalID($id);
 $algerianID->process();
 
 echo $algerianID->print();
-
-

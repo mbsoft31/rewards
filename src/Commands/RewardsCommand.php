@@ -35,16 +35,16 @@ class RewardsCommand extends Command
     protected function installDirectories(): void
     {
         $dirs = [
-            "Rewards",
-            "Rewards/Achievements",
-            "Rewards/Badges",
-            "Rewards/Criteria",
-            "Rewards/Programs",
+            'Rewards',
+            'Rewards/Achievements',
+            'Rewards/Badges',
+            'Rewards/Criteria',
+            'Rewards/Programs',
         ];
 
         foreach ($dirs as $dir) {
             $path = app_path($dir);
-            if (!is_dir($path)) {
+            if (! is_dir($path)) {
                 File::makeDirectory($path, 0755, true);
                 $this->info("Created directory: $path");
             } else {

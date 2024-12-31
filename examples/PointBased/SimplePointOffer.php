@@ -25,7 +25,7 @@ class SimplePointOffer extends BaseOffer
             status: $data['status'] ?? []
         );
         foreach ($data['rewards'] as $rewardData) {
-            $offer->rewards[$rewardData->getHash()] = $rewardData;
+            $offer->addReward($rewardData);
         }
 
         return $offer;
