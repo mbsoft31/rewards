@@ -2,7 +2,4 @@
 
 namespace Mbsoft\Rewards;
 
-class Rewards
-{
-
-}
+class Rewards {}
